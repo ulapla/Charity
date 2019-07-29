@@ -16,4 +16,8 @@ public class InstitutionService {
         return institutionRepository.findAll();
 
     }
+
+    public List<Institution> findAll(){
+        return institutionRepository.findAll();
+    }
 }
