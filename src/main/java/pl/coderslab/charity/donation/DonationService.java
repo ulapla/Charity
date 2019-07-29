@@ -17,4 +17,11 @@ public class DonationService {
         }
         return donationRepository.allDonationQuantity();
     }
+
+    public int countAllInstitutions(){
+        if(donationRepository.findAll().size() == 0){
+            return 0;
+        }
+        return donationRepository.sumAllInstitutions();
+    }
 }
