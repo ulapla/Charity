@@ -24,4 +24,8 @@ public class DonationService {
         }
         return donationRepository.sumAllInstitutions();
     }
+
+    public void saveDonation(Donation donation){
+        donationRepository.save(donation);
+    }
 }

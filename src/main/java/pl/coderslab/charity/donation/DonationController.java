@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institution.Institution;
@@ -43,6 +44,12 @@ public class DonationController {
     public String test(Model model){
         model.addAttribute("donation",new Donation());
         return "formhtml";
+    }
+
+    @PostMapping("/form")
+    public String saveDonation(@ModelAttribute Donation donation){
+        donationService.saveDonation(donation);
+        return "form";
     }
 
 }
