@@ -40,17 +40,24 @@
         <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
 
+<%--            <c:forEach items="${categories}" var="category">--%>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <form:checkbox path="categories" value="${category.id}"/>--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description">${category.name}</span>--%>
+<%--                    </label>--%>
+<%--                </div>--%>
+<%--            </c:forEach>--%>
             <c:forEach items="${categories}" var="category">
                 <div class="form-group form-group--checkbox">
                     <label>
-<%--                        <input type="checkbox" name="categories" value="books"/>--%>
-                        <form:checkbox path="categories" value="${category.id}"/>
+                        <input  class="ch" type="checkbox" name="categories" value="${category.id}"/>
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
                     </label>
                 </div>
             </c:forEach>
-
             <div class="form-group form-group--buttons">
                 <button type="button" class="btn next-step">Dalej</button>
             </div>
@@ -62,7 +69,7 @@
             <div class="form-group form-group--inline">
                 <label>
                     Liczba 60l worków:
-                    <form:input  path="quantity" type="number" name="bags" step="1" min="1" />
+                    <form:input id="bags" path="quantity" type="number" name="bags" step="1" min="1" />
                 </label>
             </div>
 
@@ -102,7 +109,7 @@
             <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
             <div class="form-section form-section--columns">
-                <div class="form-section--column">
+                <div id="inputAddress" class="form-section--column">
                     <h4>Adres odbioru</h4>
                     <div class="form-group form-group--inline">
                         <label> Ulica <form:input path="street" /> </label>
@@ -119,13 +126,11 @@
                     </div>
 
                     <div class="form-group form-group--inline">
-                        <label>
-                            Numer telefonu <input type="phone" name="phone" />
-                        </label>
+                        <label> Numer telefonu <form:input path="telNumber" /> </label>
                     </div>
                 </div>
 
-                <div class="form-section--column">
+                <div id="pickUp" class="form-section--column">
                     <h4>Termin odbioru</h4>
                     <div class="form-group form-group--inline">
                         <label> Data <form:input type="date" path="pickUpDate"/> </label>
@@ -172,20 +177,15 @@
                 <div class="form-section form-section--columns">
                     <div class="form-section--column">
                         <h4>Adres odbioru:</h4>
-                        <ul>
-                            <li>Prosta 51</li>
-                            <li>Warszawa</li>
-                            <li>99-098</li>
-                            <li>123 456 789</li>
+                        <ul id="address">
+
                         </ul>
                     </div>
 
                     <div class="form-section--column">
                         <h4>Termin odbioru:</h4>
-                        <ul>
-                            <li>13/12/2018</li>
-                            <li>15:40</li>
-                            <li>Brak uwag</li>
+                        <ul id="pickUpDT">
+
                         </ul>
                     </div>
                 </div>

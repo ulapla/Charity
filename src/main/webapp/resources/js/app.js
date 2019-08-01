@@ -164,9 +164,92 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      //----------------------categories--------------------------
+      let bagsQuantity = Number(document.querySelector("#bags").value);
+      let category="";
+      document.querySelectorAll(".ch").forEach(function (checkbox) {
+        if(checkbox.checked) {
+          let categoryName = checkbox.nextElementSibling.nextElementSibling.innerHTML;
+          category += "- " + categoryName + "<br>"
+        }
+      })
+      if(bagsQuantity === 1){
+        document.querySelector(".icon-bag").nextElementSibling.innerHTML = bagsQuantity+" worek z:<br>" +category;
+      }
+      else{
+        document.querySelector(".icon-bag").nextElementSibling.innerHTML = bagsQuantity+" worki z:<br>" +category;
+      }
+
+      //--------------------institution------------------
+      let radios = document.querySelectorAll("input[type=radio]")
+      radios.forEach(function (r) {
+        if(r.checked){
+          document.querySelector(".icon-hand").nextElementSibling.innerText =
+              "Dla: " + r.nextElementSibling.nextElementSibling.firstElementChild.innerText;
+          console.log(r.nextElementSibling.nextElementSibling.firstElementChild)
+        }
+      })
+
+      //------------------address------------------------------
+      let inputAdress = document.querySelectorAll("#inputAddress input");
+      address.innerHTML = "";
+      inputAdress.forEach(function (i) {
+        let li = document.createElement("li");
+        li.innerText = i.value;
+        address.append(li)
+
+      })
+
+      //----------------------pickUp--------------------
+      let pickUpDate = document.getElementById("pickUpDT");
+      let pickUpInputs = document.querySelectorAll("#pickUp input");
+      pickUpDate.innerHTML = ""
+      pickUpInputs.forEach(function (i) {
+        let li = document.createElement("li");
+        li.innerText = i.value;
+        pickUpDate.append(li)
+
+      })
+      let nextLi = document.createElement("li")
+      nextLi.innerText = document.querySelector("textarea").value;
+      pickUpDate.append(nextLi);
+
+
+
+
+
     }
 
   }
+// <form:checkboxes path="categories" itemLabel="name" items="${categories}"/>
+//       <form:select path="institution" itemLabel="name" items="${institutions}"/>
+//       <form:input path="zipCode"/>
+//       <form:input path="street"/>
+//       <form:input path="city"/>
+//       <form:input path="quantity"/>
+//       <form:textarea path="pickUpComment"/>
+//       <form:input type="date" path="pickUpDate"/>
+//       <form:input type="time" path="pickUpTime"/>
+//       <script
+//   src="https://code.jquery.com/jquery-3.4.1.min.js"
+//   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+//   crossorigin="anonymous"></script>
+//       <script type="text/javascript">
+
+  //     $("#zipCode").change(function () {
+  //       console.log(this);
+  //       console.log($(this).val());
+  //       $("#zipCodeSummary").html($(this).val());
+  //     });
+  // $("#quantity").change(function () {
+  //   console.log(this);
+  //   console.log($(this).val());
+  //   $("#quantitySummary").html($(this).val());
+  // });
+  // $('input[name=categories]').change(function () {
+  //   $('#categoriesSummary').html('');
+
+
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);
