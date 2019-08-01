@@ -28,9 +28,5 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("user", new User());
-        return "register";
-    }
+
 }

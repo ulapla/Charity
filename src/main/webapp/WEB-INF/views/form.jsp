@@ -38,6 +38,7 @@
 
         <form:form method="post" action="" modelAttribute="donation">
         <div data-step="1" class="active">
+            <form:input path="user" type="hidden" value="${user.id}"/>
             <h3>Zaznacz co chcesz oddać:</h3>
 
 <%--            <c:forEach items="${categories}" var="category">--%>

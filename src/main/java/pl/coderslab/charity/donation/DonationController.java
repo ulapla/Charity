@@ -1,18 +1,22 @@
 package pl.coderslab.charity.donation;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
+import pl.coderslab.charity.security.CurrentUser;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/api")
 public class DonationController {
 
     private DonationService donationService;
@@ -36,14 +40,10 @@ public class DonationController {
     }
 
     @GetMapping("/form")
-    public String createDonation(Model model){
+    public String createDonation(Model model,@AuthenticationPrincipal CurrentUser customUser){
+        model.addAttribute("user",customUser.getUser());
         model.addAttribute("donation",new Donation());
         return "form";
-    }
-    @GetMapping("/f")
-    public String test(Model model){
-        model.addAttribute("donation",new Donation());
-        return "formhtml";
     }
 
     @PostMapping("/form")
