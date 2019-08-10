@@ -49,7 +49,13 @@ public class DonationController {
     @PostMapping("/form")
     public String saveDonation(@ModelAttribute Donation donation){
         donationService.saveDonation(donation);
-        return "form";
+        return "main.page";
+    }
+
+    @GetMapping("/main_page")
+    public String displayMainPage(Model model, @AuthenticationPrincipal CurrentUser customUser){
+        model.addAttribute("donations", donationService.findAllByUserId(customUser.getUser().getId()));
+        return "main.page";
     }
 
 }

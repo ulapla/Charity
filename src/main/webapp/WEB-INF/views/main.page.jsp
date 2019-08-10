@@ -5,11 +5,16 @@
 <jsp:include page="header.jsp"/>
 
 <section class="login-page">
+    <a href="/api/form" class="btn btn--without-border">Przekaż nowy datek</a>
     <h2>Twoje donacje</h2>
-    <ul>
+    <ul class="help--slides-items">
         <c:forEach items="${donations}" var="donation">
             <li>
-                ${donation.institution}, ${donation.pickUpDate}
+                <div class="col">
+                <div class="title">${donation.institution.name},
+                    Ilość worków: ${donation.quantity},
+                       Data przekazania: ${donation.pickUpDate}</div>
+                </div>
             </li>
         </c:forEach>
     </ul>
