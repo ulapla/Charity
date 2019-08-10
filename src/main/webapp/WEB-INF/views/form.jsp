@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/resources/css/style.css" />
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -89,7 +89,7 @@
 
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <form:radiobutton path="institution" name="organization" value="${inst.id}"/>
+                        <form:radiobutton path="institution" value="${inst.id}"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
                           <div class="title">${inst.name}</div>

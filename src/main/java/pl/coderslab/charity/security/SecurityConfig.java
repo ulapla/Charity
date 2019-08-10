@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().permitAll()
                 .and().formLogin()
-                //.loginPage("/login")
+                .loginPage("/login")
                 .defaultSuccessUrl("/api/form")
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll();

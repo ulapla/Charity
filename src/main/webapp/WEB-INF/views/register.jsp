@@ -17,7 +17,7 @@
             <form:input path="email" name="email" placeholder="Email" />
         </div>
         <div class="form-group">
-            <form:input path="password" name="password" placeholder="Hasło" />
+            <form:input path="password" type="password" placeholder="Hasło" />
         </div>
         <div class="form-group">
             <input type="password" name="password2" placeholder="Powtórz hasło" />

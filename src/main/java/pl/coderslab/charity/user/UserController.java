@@ -14,10 +14,10 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("/login")
-//    public String login(){
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 
     @GetMapping("/register")
     public String createUser(Model model) {
