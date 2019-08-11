@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="header.jsp"/>
-<section>
+<section class="login-page">
     <h2>Zaufane instytucje</h2>
     <a href="/admin/institution/add" class="btn btn--without-border">Dodaj nową instytucję</a>
     <ul class="help--slides-items">
@@ -12,13 +12,19 @@
             <li>
                 <div class="col">
                     <div class="title">${inst.name}</div>
+
                     <div class="subtitle">Cel i misja: ${inst.description}</div>
+
                 </div>
-                <form method="post" action="/admin/institutions">
-                    <input name="id" type="hidden" value="${inst.id}"/>
-                    <button value="edit" type="submit" class="btn">Edytuj</button>
-                    <button value="delete" type="submit" class="btn">Usuń</button>
-                </form>
+
+                    <form method="post" action="/admin/institutions">
+                        <input name="id" type="hidden" value="${inst.id}"/>
+                        <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
+                        <button name="action" value="delete" type="submit" class="btn">Usuń</button>
+                    </form>
+
+
+
             </li>
         </c:forEach>
 

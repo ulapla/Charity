@@ -24,4 +24,8 @@ public class InstitutionService {
     public Institution findById(Long id){
         return institutionRepository.findById(id).get();
     }
+
+    public void deleteById(Long id){
+        institutionRepository.deleteById(id);
+    }
 }

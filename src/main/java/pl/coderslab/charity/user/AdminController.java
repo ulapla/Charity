@@ -33,10 +33,15 @@ public class AdminController {
     }
 
     @PostMapping("/institutions")
-    public String updateInstitution(@RequestParam Long id, Model model){
-        Institution institution = institutionService.findById(id);
-        model.addAttribute("institution", institution);
-        return "institution.form";
+    public String updateInstitution(@RequestParam Long id, Model model, @RequestParam String action){
+       if(action.equals("edit")) {
+           Institution institution = institutionService.findById(id);
+           model.addAttribute("institution", institution);
+           return "institution.form";
+       }else if(action.equals("delete")){
+           institutionService.deleteById(id);
+       }
+        return "institutions";
     }
 
 }
