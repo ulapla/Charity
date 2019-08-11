@@ -75,16 +75,16 @@
         <div data-step="3">
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-            <c:forEach items="${institutions}" var="inst">
+            <c:forEach items="${institutions}" var="admin">
 
 
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <form:radiobutton path="institution" value="${inst.id}"/>
+                        <form:radiobutton path="institution" value="${admin.id}"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
-                          <div class="title">${inst.name}</div>
-                          <div class="subtitle">Cel i misja: ${inst.description}</div>
+                          <div class="title">${admin.name}</div>
+                          <div class="subtitle">Cel i misja: ${admin.description}</div>
                         </span>
                     </label>
                 </div>
