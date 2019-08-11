@@ -8,6 +8,7 @@ import pl.coderslab.charity.security.RoleRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,5 +35,10 @@ public class UserServiceImpl implements UserService {
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findUserByRole(Role role) {
+        return userRepository.findUserByRoles(role);
     }
 }

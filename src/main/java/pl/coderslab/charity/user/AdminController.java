@@ -1,21 +1,25 @@
 package pl.coderslab.charity.user;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
-import pl.coderslab.charity.security.CurrentUser;
+import pl.coderslab.charity.security.Role;
+import pl.coderslab.charity.security.RoleRepository;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
     private InstitutionService institutionService;
+    private UserService userService;
+    private RoleRepository roleRepository;
 
-    public AdminController(InstitutionService institutionService) {
+    public AdminController(InstitutionService institutionService, UserService userService, RoleRepository roleRepository) {
         this.institutionService = institutionService;
+        this.userService = userService;
+        this.roleRepository = roleRepository;
     }
 
     @GetMapping("/panel")
@@ -51,6 +55,13 @@ public class AdminController {
     public String addInstitution(@ModelAttribute Institution institution){
         institutionService.save(institution);
         return "redirect:/admin/institutions";
+    }
+
+    @GetMapping("/allAdmins")
+    public String showAdmins(Model model){
+        Role role = roleRepository.findByName("ROLE_ADMIN");
+        model.addAttribute("admins", userService.findUserByRole(role));
+        return"all.admins";
     }
 
 }
