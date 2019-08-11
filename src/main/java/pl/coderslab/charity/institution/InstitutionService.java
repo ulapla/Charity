@@ -20,4 +20,8 @@ public class InstitutionService {
     public List<Institution> findAll(){
         return institutionRepository.findAll();
     }
+
+    public Institution findById(Long id){
+        return institutionRepository.findById(id).get();
+    }
 }

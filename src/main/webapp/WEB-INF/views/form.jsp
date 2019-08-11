@@ -41,15 +41,6 @@
             <form:input path="user" type="hidden" value="${user.id}"/>
             <h3>Zaznacz co chcesz oddać:</h3>
 
-<%--            <c:forEach items="${categories}" var="category">--%>
-<%--                <div class="form-group form-group--checkbox">--%>
-<%--                    <label>--%>
-<%--                        <form:checkbox path="categories" value="${category.id}"/>--%>
-<%--                        <span class="checkbox"></span>--%>
-<%--                        <span class="description">${category.name}</span>--%>
-<%--                    </label>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
             <c:forEach items="${categories}" var="category">
                 <div class="form-group form-group--checkbox">
                     <label>
@@ -165,12 +156,12 @@
                     <ul>
                         <li>
                             <span class="icon icon-bag"></span>
-                            <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
+                            <span class="summary--text"></span>
                         </li>
 
                         <li>
                             <span class="icon icon-hand"></span>
-                            <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
+                            <span class="summary--text"></span>
                         </li>
                     </ul>
                 </div>
