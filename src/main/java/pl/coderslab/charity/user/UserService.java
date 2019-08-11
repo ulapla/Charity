@@ -8,7 +8,13 @@ public interface UserService {
 
     User findByUserName(String name);
 
+    User findById(Long id);
+
     void saveUser(User user);
 
     List<User> findUserByRole(Role role);
+
+    List<User> findAll();
+
+    public void addRole(User user, String roleName);
 }

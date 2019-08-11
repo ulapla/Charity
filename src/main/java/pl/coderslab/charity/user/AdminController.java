@@ -8,6 +8,8 @@ import pl.coderslab.charity.institution.InstitutionService;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
 
+import java.util.Set;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -64,4 +66,16 @@ public class AdminController {
         return"all.admins";
     }
 
+    @GetMapping("/add")
+    public String addAdmin(Model model){
+        model.addAttribute("users",userService.findAll());
+        model.addAttribute("user", new User());
+        return "admin.form";
+    }
+
+    @PostMapping("/add")
+    public String addAdmin(@ModelAttribute User user){
+        userService.addRole(userService.findById(user.getId()),"ROLE_ADMIN");
+        return "redirect:/admin/allAdmins";
+    }
 }

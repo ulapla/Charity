@@ -9,6 +9,7 @@ import pl.coderslab.charity.security.RoleRepository;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,6 +29,12 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
     @Override
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -37,8 +44,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public void addRole(User user, String roleName){
+        Role role = roleRepository.findByName(roleName);
+        Set<Role> roles = user.getRoles();
+        roles.add(role);
+        user.setRoles(roles);
+        userRepository.save(user);
+    }
+
     @Override
     public List<User> findUserByRole(Role role) {
         return userRepository.findUserByRoles(role);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

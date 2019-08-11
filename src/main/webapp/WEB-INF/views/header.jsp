@@ -16,6 +16,15 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
+            <c:if test="${not empty pageContext.request.userPrincipal}">
+
+                <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+
+                    <li><a href="/admin/panel" class="btn btn--small btn--without-border">Panel administratora</a></li>
+
+                </c:if>
+
+            </c:if>
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>
             <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
