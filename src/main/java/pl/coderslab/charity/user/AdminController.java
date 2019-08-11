@@ -3,10 +3,7 @@ package pl.coderslab.charity.user;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
 import pl.coderslab.charity.security.CurrentUser;
@@ -41,7 +38,19 @@ public class AdminController {
        }else if(action.equals("delete")){
            institutionService.deleteById(id);
        }
-        return "institutions";
+        return "redirect:/admin/institutions";
+    }
+
+    @GetMapping("institution/add")
+    public String addInstitution(Model model){
+        model.addAttribute("institution",new Institution());
+        return "institution.form";
+    }
+
+    @PostMapping("institution/save")
+    public String addInstitution(@ModelAttribute Institution institution){
+        institutionService.save(institution);
+        return "redirect:/admin/institutions";
     }
 
 }

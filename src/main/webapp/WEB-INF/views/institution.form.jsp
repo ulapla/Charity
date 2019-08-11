@@ -8,7 +8,7 @@
     <h2>Edycja instytucji</h2>
 
 
-    <form:form method="post" action="institution/save" modelAttribute="institution">
+    <form:form method="post" action="/admin/institution/save" modelAttribute="institution">
         <div class="form-group form-group--inline">
             <label> Nazwa instytucji<br><form:textarea
                     path="name" value="${institution.name}"/> </label>
