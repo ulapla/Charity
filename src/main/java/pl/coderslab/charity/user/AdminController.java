@@ -63,7 +63,7 @@ public class AdminController {
     public String showAdmins(Model model){
         Role role = roleRepository.findByName("ROLE_ADMIN");
         model.addAttribute("admins", userService.findUserByRole(role));
-        return"all.admins";
+        return"admins.list";
     }
 
     @GetMapping("/add")

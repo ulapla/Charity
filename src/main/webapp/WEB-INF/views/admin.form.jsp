@@ -20,18 +20,24 @@
 
     <form:form method="post" action="/admin/update" modelAttribute="user">
     <div class="form-group form-group--inline">
-        <label> Imię <form:input path="name" value="${user.name}"/> </label>
+        <label> Imię <br><form:input path="name" value="${user.name}"/> </label>
     </div>
     <div class="form-group form-group--inline">
-        <label> Nazwisko <form:input path="surname" value="${user.surname}"/> </label>
+        <label> Nazwisko <br><form:input path="surname" value="${user.surname}"/> </label>
     </div>
     <div class="form-group form-group--inline">
-        <label> email <form:input path="email" value="${user.email}"/> </label>
+        <label> email <br> <form:input path="email" value="${user.email}"/> </label>
     </div>
-    <form:input path="id" value="${user.id}" type="hidden"/>
-    <form:input path="password" value="${user.password}" type="hidden"/>
-    <form:input path="enabled" value="${user.enabled}" type="hidden"/>
+    <div class="form-group form-group--inline">
+        <label>zablokowany</label>
+        <form:select path="enabled" >
+            <form:option value="1">nie</form:option>
+            <form:option value="0" label="tak"></form:option>
+        </form:select>
+    </div>
 
+    <form:hidden path="id" value="${user.id}"/>
+    <form:hidden path="password" value="${user.password}"/>
     <div class="form-group form-group--buttons">
         <form:button type="submit" class="btn">Zapisz</form:button>
 

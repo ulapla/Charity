@@ -25,6 +25,7 @@
         <ul>
             <li><a href="/admin/institutions" class="btn btn--without-border">Zaufane instutucje</a></li>
             <li><a href="/admin/allAdmins" class="btn btn--without-border active">Administratorzy</a></li>
+            <li><a href="/admin/allUsers" class="btn btn--without-border active">Użytkownicy</a></li>
 
         </ul>
     </nav>
