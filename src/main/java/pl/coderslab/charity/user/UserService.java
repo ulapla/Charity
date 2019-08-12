@@ -16,5 +16,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    public void addRole(User user, String roleName);
+    void addRole(User user, String roleName);
+
+    void deleteUser(User user);
 }

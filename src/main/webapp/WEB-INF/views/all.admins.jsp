@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <form method="post" action="/admin/">
+                <form method="post" action="/admin/action">
                     <input name="id" type="hidden" value="${admin.id}"/>
                     <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
                     <button name="action" value="delete" type="submit" class="btn">Usuń</button>

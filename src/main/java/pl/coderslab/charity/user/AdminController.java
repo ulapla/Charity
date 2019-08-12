@@ -78,4 +78,21 @@ public class AdminController {
         userService.addRole(userService.findById(user.getId()),"ROLE_ADMIN");
         return "redirect:/admin/allAdmins";
     }
+
+    @PostMapping("/action")
+    public String adminAction(@RequestParam Long id, Model model, @RequestParam String action) {
+        if (action.equals("edit")) {
+            model.addAttribute("user",userService.findById(id));
+            return "admin.form";
+        } else if (action.equals("delete")) {
+            userService.deleteUser(userService.findById(id));
+        }
+        return "redirect:/admin/allAdmins";
+    }
+
+    @PostMapping("/update")
+    public String updateAdmin(@ModelAttribute User user){
+        userService.saveUser(user);
+        return "redirect:/admin/allAdmins";
+    }
 }
