@@ -23,8 +23,8 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <form method="post" action="admin/user/action">
-                        <input name="id" type="hidden" value="${admin.id}"/>
+                    <form method="post" action="/admin/user/action">
+                        <input name="id" type="hidden" value="${user.id}"/>
                         <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
                         <button name="action" value="delete" type="submit" class="btn">Usuń</button>
                     </form>

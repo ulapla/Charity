@@ -101,4 +101,15 @@ public class AdminController {
         model.addAttribute("users", userService.findUserByRole(roleRepository.findByName("ROLE_USER")));
         return "users.list";
     }
+
+    @PostMapping("/user/action")
+    public String actionUser(@RequestParam Long id, Model model, @RequestParam String action) {
+        if (action.equals("edit")) {
+            model.addAttribute("user",userService.findById(id));
+            return "admin.form";
+        } else if (action.equals("delete")) {
+            userService.deleteUser(userService.findById(id));
+        }
+        return "redirect:/admin/allUsers";
+    }
 }
