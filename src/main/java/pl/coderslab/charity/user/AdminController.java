@@ -95,4 +95,10 @@ public class AdminController {
         userService.saveUser(user);
         return "redirect:/admin/allAdmins";
     }
+
+    @GetMapping("/allUsers")
+    public String showUsers(Model model){
+        model.addAttribute("users", userService.findUserByRole(roleRepository.findByName("ROLE_USER")));
+        return "users.list";
+    }
 }
