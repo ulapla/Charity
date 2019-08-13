@@ -5,7 +5,7 @@
 <jsp:include page="header.jsp"/>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
+    <h2>Rejestracja</h2>
     <form:form action="/register" method="post" modelAttribute="user">
         <div class="form-group">
             <form:input path="name" name="name" placeholder="Imię" />
