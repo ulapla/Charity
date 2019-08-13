@@ -44,6 +44,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public void updateUser(User user){
+        userRepository.save(user);
+    }
+
     public void addRole(User user, String roleName){
         Role role = roleRepository.findByName(roleName);
         Set<Role> roles = user.getRoles();

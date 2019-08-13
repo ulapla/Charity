@@ -16,6 +16,7 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
+            <li><a href="/api/main_page" class="btn btn--small btn--without-border">Moje konto</a></li>
             <li><a href="/admin/panel" class="btn btn--small btn--without-border">Panel administratora</a></li>
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>

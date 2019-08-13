@@ -23,6 +23,11 @@
                     <li><a href="/admin/panel" class="btn btn--small btn--without-border">Panel administratora</a></li>
 
                 </c:if>
+                <c:if test="${pageContext.request.isUserInRole('USER')}">
+
+                    <li><a href="/api/main_page" class="btn btn--small btn--without-border">Moje konto</a></li>
+
+                </c:if>
 
             </c:if>
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>

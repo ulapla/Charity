@@ -3,10 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="header.jsp"/>
+<section>
+<nav class="container container--70">
 
+        <a href="/edit/user" class="btn btn--without-border">Edycja danych</a>
+        <a href="/api/form" class="btn btn--without-border">Przekaż nowy datek</a>
+
+</nav>
+</section>
 <section class="login-page">
 
-    <a href="/api/form" class="btn btn--without-border">Przekaż nowy datek</a>
     <h2>Twoje donacje</h2>
     <ul class="help--slides-items">
         <c:forEach items="${donations}" var="donation">

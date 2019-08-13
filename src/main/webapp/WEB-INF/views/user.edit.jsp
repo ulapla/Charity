@@ -2,12 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:include page="header.admin.jsp"/>
+<jsp:include page="header.jsp"/>
 
 <section class="login-page">
-    <h2>Administrator</h2>
 
-    <form:form method="post" action="/admin/update" modelAttribute="user">
+    <h2>Edytuj dane</h2>
+
+    <form:form method="post" action="/edit/user" modelAttribute="user">
     <div class="form-group form-group--inline">
         <label> Imię <br><form:input path="name" value="${user.name}"/> </label>
     </div>
@@ -18,15 +19,11 @@
         <label> email <br> <form:input path="email" value="${user.email}"/> </label>
     </div>
     <div class="form-group form-group--inline">
-        <label>zablokowany</label>
-        <form:select path="enabled" >
-            <form:option value="1">nie</form:option>
-            <form:option value="0" label="tak"></form:option>
-        </form:select>
+        <label>nowe hasło <br><form:password path="password"/></label>
     </div>
 
     <form:hidden path="id" value="${user.id}"/>
-    <form:hidden path="password" value="${user.password}"/>
+
     <div class="form-group form-group--buttons">
         <form:button type="submit" class="btn">Zapisz</form:button>
 
@@ -34,4 +31,4 @@
     </div>
 </section>
 
-<jsp:include page="../footer.jsp"/>
+<jsp:include page="./footer.jsp"/>
