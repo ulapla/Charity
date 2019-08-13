@@ -24,13 +24,12 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                    <form method="post" action="/admin/action">
+                        <input name="id" type="hidden" value="${admin.id}"/>
+                        <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
+                        <button name="action" value="delete" type="submit" class="btn">Usuń</button>
+                    </form>
                 </div>
-
-                <form method="post" action="/admin/action">
-                    <input name="id" type="hidden" value="${admin.id}"/>
-                    <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
-                    <button name="action" value="delete" type="submit" class="btn">Usuń</button>
-                </form>
             </li>
         </c:forEach>
 
@@ -39,4 +38,4 @@
 </section>
 
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>

@@ -8,6 +8,7 @@ import pl.coderslab.charity.institution.InstitutionService;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Controller
@@ -26,13 +27,13 @@ public class AdminController {
 
     @GetMapping("/panel")
     public String showAdminPanel(){
-        return "admin.panel";
+        return "admin/admin.panel";
     }
 
     @GetMapping("/institutions")
     public String showInstitutions(Model model){
         model.addAttribute("institutions",institutionService.findAll());
-        return "institutions";
+        return "admin/institutions";
     }
 
     @PostMapping("/institutions")
@@ -40,7 +41,7 @@ public class AdminController {
        if(action.equals("edit")) {
            Institution institution = institutionService.findById(id);
            model.addAttribute("institution", institution);
-           return "institution.form";
+           return "admin/institution.form";
        }else if(action.equals("delete")){
            institutionService.deleteById(id);
        }
@@ -50,7 +51,7 @@ public class AdminController {
     @GetMapping("institution/add")
     public String addInstitution(Model model){
         model.addAttribute("institution",new Institution());
-        return "institution.form";
+        return "admin/institution.form";
     }
 
     @PostMapping("institution/save")
@@ -63,19 +64,18 @@ public class AdminController {
     public String showAdmins(Model model){
         Role role = roleRepository.findByName("ROLE_ADMIN");
         model.addAttribute("admins", userService.findUserByRole(role));
-        return"admins.list";
+        return"admin/admins.list";
     }
 
     @GetMapping("/add")
     public String addAdmin(Model model){
         model.addAttribute("users",userService.findAll());
-        model.addAttribute("user", new User());
-        return "admin.form";
+        return "admin/admin.add";
     }
 
     @PostMapping("/add")
-    public String addAdmin(@ModelAttribute User user){
-        userService.addRole(userService.findById(user.getId()),"ROLE_ADMIN");
+    public String addAdmin(@RequestParam Long id){
+        userService.addRole(userService.findById(id),"ROLE_ADMIN");
         return "redirect:/admin/allAdmins";
     }
 
@@ -83,7 +83,7 @@ public class AdminController {
     public String adminAction(@RequestParam Long id, Model model, @RequestParam String action) {
         if (action.equals("edit")) {
             model.addAttribute("user",userService.findById(id));
-            return "admin.form";
+            return "admin/admin.form";
         } else if (action.equals("delete")) {
             userService.deleteUser(userService.findById(id));
         }
@@ -99,14 +99,14 @@ public class AdminController {
     @GetMapping("/allUsers")
     public String showUsers(Model model){
         model.addAttribute("users", userService.findUserByRole(roleRepository.findByName("ROLE_USER")));
-        return "users.list";
+        return "admin/users.list";
     }
 
     @PostMapping("/user/action")
     public String actionUser(@RequestParam Long id, Model model, @RequestParam String action) {
         if (action.equals("edit")) {
             model.addAttribute("user",userService.findById(id));
-            return "admin.form";
+            return "admin/admin.form";
         } else if (action.equals("delete")) {
             userService.deleteUser(userService.findById(id));
         }

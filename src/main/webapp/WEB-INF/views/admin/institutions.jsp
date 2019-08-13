@@ -33,4 +33,4 @@
 </section>
 
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
