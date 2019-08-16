@@ -79,20 +79,23 @@ public class AdminController {
         return "redirect:/admin/allAdmins";
     }
 
-    @PostMapping("/action")
-    public String adminAction(@RequestParam Long id, Model model, @RequestParam String action) {
-        if (action.equals("edit")) {
+
+    @PostMapping("/edit")
+    public String adminAction(@RequestParam Long id, Model model) {
             model.addAttribute("user",userService.findById(id));
+            model.addAttribute("allRoles", roleRepository.findAll());
             return "admin/admin.form";
-        } else if (action.equals("delete")) {
-            userService.deleteUser(userService.findById(id));
-        }
+    }
+
+    @PostMapping("/delete")
+    public String deleteAdmin(@RequestParam Long id){
+        userService.deleteUser(userService.findById(id));
         return "redirect:/admin/allAdmins";
     }
 
     @PostMapping("/update")
     public String updateAdmin(@ModelAttribute User user){
-        userService.saveUser(user);
+        userService.updateUser(user);
         return "redirect:/admin/allAdmins";
     }
 
@@ -102,14 +105,16 @@ public class AdminController {
         return "admin/users.list";
     }
 
-    @PostMapping("/user/action")
-    public String actionUser(@RequestParam Long id, Model model, @RequestParam String action) {
-        if (action.equals("edit")) {
-            model.addAttribute("user",userService.findById(id));
-            return "admin/admin.form";
-        } else if (action.equals("delete")) {
-            userService.deleteUser(userService.findById(id));
-        }
+    @PostMapping("/user/edit")
+    public String actionUser(@RequestParam Long id, Model model) {
+        model.addAttribute("user",userService.findById(id));
+        model.addAttribute("allRoles", roleRepository.findAll());
+        return "admin/admin.form";
+    }
+
+    @PostMapping("/user/delete")
+    public String deleteUser(@RequestParam Long id){
+        userService.deleteUser(userService.findById(id));
         return "redirect:/admin/allUsers";
     }
 }

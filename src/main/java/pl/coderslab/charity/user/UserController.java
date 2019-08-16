@@ -55,5 +55,4 @@ public class UserController {
         return "redirect:/api/main_page";
     }
 
-
 }

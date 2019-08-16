@@ -15,18 +15,23 @@
         <label> Nazwisko <br><form:input path="surname" value="${user.surname}"/> </label>
     </div>
     <div class="form-group form-group--inline">
-        <label> email <br> <form:input path="email" value="${user.email}"/> </label>
+        <label> Email <br> <form:input path="email" value="${user.email}"/> </label>
     </div>
     <div class="form-group form-group--inline">
-        <label>zablokowany</label>
-        <form:select path="enabled" >
-            <form:option value="1">nie</form:option>
-            <form:option value="0" label="tak"></form:option>
-        </form:select>
+        <label>Zablokowany <br>
+            <form:radiobutton path="enabled" value="1"/>nie
+            <form:radiobutton path="enabled" value="0" label="tak"/>
+        </label>
     </div>
-
+    <div class="form-group form-group--inline">
+        <label>Role użykownika<br>
+        <form:checkboxes itemValue="id" itemLabel="name" path="roles" items="${allRoles}" />
+        </label>
+    </div>
     <form:hidden path="id" value="${user.id}"/>
     <form:hidden path="password" value="${user.password}"/>
+
+
     <div class="form-group form-group--buttons">
         <form:button type="submit" class="btn">Zapisz</form:button>
 

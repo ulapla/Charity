@@ -11,9 +11,9 @@
         <c:forEach items="${admins}" var="admin">
             <li>
                 <div class="col">
-                    <div class="title">Dane: ${admin.name} ${admin.surname} </div>
+                    <div class="title">${admin.name} ${admin.surname} </div>
 
-                    <div class="title">Email: ${admin.email}</div>
+                    <div class="title">${admin.email}</div>
                     <div class="subtitle">Zablokowany:
                         <c:choose>
                             <c:when test="${admin.enabled == 1}">
@@ -24,10 +24,13 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <form method="post" action="/admin/action">
+                    <form method="post" action="/admin/edit" style="display: inline">
                         <input name="id" type="hidden" value="${admin.id}"/>
-                        <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
-                        <button name="action" value="delete" type="submit" class="btn">Usuń</button>
+                        <button type="submit" class="btn">Edytuj</button>
+                    </form>
+                    <form method="post" action="/admin/delete" style="display: inline">
+                        <input name="id" type="hidden" value="${admin.id}"/>
+                        <button type="submit" class="btn">Usuń</button>
                     </form>
                 </div>
             </li>
