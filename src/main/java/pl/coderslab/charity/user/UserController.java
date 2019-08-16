@@ -1,6 +1,7 @@
 package pl.coderslab.charity.user;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,11 @@ import pl.coderslab.charity.security.CurrentUser;
 public class UserController {
 
     private final UserService userService;
+    private BCryptPasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/login")
@@ -49,7 +52,7 @@ public class UserController {
         userToUpdate.setSurname(user.getSurname());
         userToUpdate.setEmail(user.getEmail());
         if(!user.getPassword().equals("")){
-            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         userService.updateUser(userToUpdate);
         return "redirect:/api/main_page";

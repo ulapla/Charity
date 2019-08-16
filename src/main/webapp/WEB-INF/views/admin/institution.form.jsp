@@ -19,10 +19,11 @@
         </div>
 
         <div class="form-group form-group--buttons">
+            <form:hidden path="id" value="${institution.id}"/>
             <form:button type="submit" class="btn">Zapisz</form:button>
-
+        </div>
     </form:form>
-    </div>
+
 </section>
 
 <jsp:include page="../footer.jsp"/>

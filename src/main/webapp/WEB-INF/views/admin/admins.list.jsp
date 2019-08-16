@@ -24,11 +24,11 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <form method="post" action="/admin/edit" style="display: inline">
+                    <form method="post" action="/admin/admin/edit" style="display: inline">
                         <input name="id" type="hidden" value="${admin.id}"/>
                         <button type="submit" class="btn">Edytuj</button>
                     </form>
-                    <form method="post" action="/admin/delete" style="display: inline">
+                    <form method="post" action="/admin/admin/delete" style="display: inline">
                         <input name="id" type="hidden" value="${admin.id}"/>
                         <button type="submit" class="btn">Usuń</button>
                     </form>

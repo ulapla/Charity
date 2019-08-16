@@ -36,15 +36,17 @@ public class AdminController {
         return "admin/institutions";
     }
 
-    @PostMapping("/institutions")
-    public String updateInstitution(@RequestParam Long id, Model model, @RequestParam String action){
-       if(action.equals("edit")) {
+    @PostMapping("/institution/edit")
+    public String editInstitution(@RequestParam Long id, Model model){
            Institution institution = institutionService.findById(id);
            model.addAttribute("institution", institution);
            return "admin/institution.form";
-       }else if(action.equals("delete")){
-           institutionService.deleteById(id);
-       }
+    }
+
+    @PostMapping("/institution/delete")
+    public String deleteInstitution(@RequestParam Long id){
+            institutionService.deleteById(id);
+
         return "redirect:/admin/institutions";
     }
 
@@ -80,20 +82,20 @@ public class AdminController {
     }
 
 
-    @PostMapping("/edit")
+    @PostMapping("/admin/edit")
     public String adminAction(@RequestParam Long id, Model model) {
-            model.addAttribute("user",userService.findById(id));
-            model.addAttribute("allRoles", roleRepository.findAll());
-            return "admin/admin.form";
+        model.addAttribute("user", userService.findById(id));
+        model.addAttribute("allRoles", roleRepository.findAll());
+        return "admin/admin.form";
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/admin/delete")
     public String deleteAdmin(@RequestParam Long id){
         userService.deleteUser(userService.findById(id));
         return "redirect:/admin/allAdmins";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/admin/update")
     public String updateAdmin(@ModelAttribute User admin){
         userService.updateUser(admin);
         return "redirect:/admin/allAdmins";
@@ -109,7 +111,7 @@ public class AdminController {
     public String actionUser(@RequestParam Long id, Model model) {
         model.addAttribute("user",userService.findById(id));
         model.addAttribute("allRoles", roleRepository.findAll());
-        return "admin/admin.form";
+        return "admin/user.form";
     }
 
     @PostMapping("/user/delete")

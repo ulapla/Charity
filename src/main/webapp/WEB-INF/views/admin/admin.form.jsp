@@ -7,7 +7,7 @@
 <section class="login-page">
     <h2>Edycja administratora</h2>
 
-    <form:form method="post" action="/admin/update" modelAttribute="user">
+    <form:form method="post" action="/admin/admin/update" modelAttribute="user">
     <div class="form-group form-group--inline">
         <label> Imię <br><form:input path="name" value="${user.name}"/> </label>
     </div>

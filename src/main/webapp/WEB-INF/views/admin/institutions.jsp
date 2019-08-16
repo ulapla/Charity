@@ -8,20 +8,22 @@
     <a href="/admin/institution/add" class="btn btn--without-border">Dodaj nową instytucję</a>
     <ul class="help--slides-items">
         <li></li>
-        <c:forEach items="${institutions}" var="admin">
+        <c:forEach items="${institutions}" var="institution">
             <li>
                 <div class="col">
-                    <div class="title">${admin.name}</div>
+                    <div class="title">${institution.name}</div>
 
-                    <div class="subtitle">Cel i misja: ${admin.description}</div>
+                    <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    <form method="post" action="/admin/institution/edit" style="display: inline">
+                        <input name="id" type="hidden" value="${institution.id}"/>
+                        <button type="submit" class="btn">Edytuj</button>
+                    </form>
+                    <form method="post" action="/admin/institution/delete" style="display: inline">
+                        <input name="id" type="hidden" value="${institution.id}"/>
+                        <button type="submit" class="btn">Usuń</button>
+                    </form>
 
                 </div>
-
-                    <form method="post" action="/admin/institutions">
-                        <input name="id" type="hidden" value="${admin.id}"/>
-                        <button name="action" value="edit" type="submit" class="btn">Edytuj</button>
-                        <button name="action" value="delete" type="submit" class="btn">Usuń</button>
-                    </form>
 
 
 
