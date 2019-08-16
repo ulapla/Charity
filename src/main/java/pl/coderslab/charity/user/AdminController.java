@@ -94,8 +94,8 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public String updateAdmin(@ModelAttribute User user){
-        userService.updateUser(user);
+    public String updateAdmin(@ModelAttribute User admin){
+        userService.updateUser(admin);
         return "redirect:/admin/allAdmins";
     }
 
@@ -115,6 +115,12 @@ public class AdminController {
     @PostMapping("/user/delete")
     public String deleteUser(@RequestParam Long id){
         userService.deleteUser(userService.findById(id));
+        return "redirect:/admin/allUsers";
+    }
+
+    @PostMapping("/user/update")
+    public String updateUser(@ModelAttribute User user){
+        userService.updateUser(user);
         return "redirect:/admin/allUsers";
     }
 }
