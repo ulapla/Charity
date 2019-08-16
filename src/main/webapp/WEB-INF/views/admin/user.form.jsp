@@ -5,9 +5,9 @@
 <jsp:include page="header.admin.jsp"/>
 
 <section class="login-page">
-    <h2>Edycja administratora</h2>
+    <h2>Edycja Użytkownika</h2>
 
-    <form:form method="post" action="/admin/update" modelAttribute="user">
+    <form:form method="post" action="/admin/user/update" modelAttribute="user">
     <div class="form-group form-group--inline">
         <label> Imię <br><form:input path="name" value="${user.name}"/> </label>
     </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="form-group form-group--inline">
         <label>Role użykownika<br>
-        <form:checkboxes itemValue="id" itemLabel="name" path="roles" items="${allRoles}" />
+            <form:checkboxes itemValue="id" itemLabel="name" path="roles" items="${allRoles}" />
         </label>
     </div>
     <form:hidden path="id" value="${user.id}"/>
