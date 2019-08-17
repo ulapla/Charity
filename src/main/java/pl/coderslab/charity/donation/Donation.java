@@ -29,6 +29,7 @@ public class Donation {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
+    private Boolean pickedUp = false;
     @ManyToOne
     private User user;
 
@@ -126,5 +127,13 @@ public class Donation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getPickedUp() {
+        return pickedUp;
+    }
+
+    public void setPickedUp(Boolean pickedUp) {
+        this.pickedUp = pickedUp;
     }
 }

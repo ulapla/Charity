@@ -32,6 +32,6 @@ public class DonationService {
     }
 
     public List<Donation> findAllByUserId(Long id){
-       return donationRepository.findAllByUserId(id);
+       return donationRepository.findAllByUserIdOrderByPickedUp(id);
     }
 }

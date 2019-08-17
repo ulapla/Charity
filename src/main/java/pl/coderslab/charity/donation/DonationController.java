@@ -49,7 +49,7 @@ public class DonationController {
     @PostMapping("/form")
     public String saveDonation(@ModelAttribute Donation donation){
         donationService.saveDonation(donation);
-        return "main.page";
+        return "redirect:/api/main_page";
     }
 
     @GetMapping("/main_page")

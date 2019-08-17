@@ -20,7 +20,14 @@
                 <div class="col">
                 <div class="title">${donation.institution.name},
                     Ilość worków: ${donation.quantity},
-                       Data przekazania: ${donation.pickUpDate}</div>
+                    Data przekazania: ${donation.pickUpDate}
+                </div>
+                    <div class="subtitle">
+                    <c:if test="${donation.pickedUp == false}">
+                        jeszcze nie
+                    </c:if>
+                    przekazano
+                </div>
                 </div>
             </li>
         </c:forEach>
