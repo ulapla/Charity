@@ -8,6 +8,7 @@ import pl.coderslab.charity.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -30,9 +31,15 @@ public class Donation {
     private LocalTime pickUpTime;
     private String pickUpComment;
     private Boolean pickedUp = false;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdOn;
     @ManyToOne
     private User user;
 
+    @PrePersist
+    public void prePersist() {
+        createdOn = LocalDate.now();
+    }
     public Long getId() {
         return id;
     }
@@ -135,5 +142,13 @@ public class Donation {
 
     public void setPickedUp(Boolean pickedUp) {
         this.pickedUp = pickedUp;
+    }
+
+    public LocalDate getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDate createdOn) {
+        this.createdOn = createdOn;
     }
 }

@@ -1,6 +1,7 @@
 package pl.coderslab.charity.donation;
 
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.user.UserService;
 
 import java.util.List;
 
@@ -8,9 +9,11 @@ import java.util.List;
 public class DonationService {
 
     private DonationRepository donationRepository;
+    private UserService userService;
 
-    public DonationService(DonationRepository donationRepository) {
+    public DonationService(DonationRepository donationRepository, UserService userService) {
         this.donationRepository = donationRepository;
+        this.userService = userService;
     }
 
     public int allDonationQuantity(){
@@ -32,6 +35,6 @@ public class DonationService {
     }
 
     public List<Donation> findAllByUserId(Long id){
-       return donationRepository.findAllByUserIdOrderByPickedUp(id);
+       return donationRepository.findAllOrdered(userService.findById(id));
     }
 }
