@@ -3,10 +3,7 @@ package pl.coderslab.charity.donation;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institution.Institution;
@@ -56,6 +53,12 @@ public class DonationController {
     public String displayMainPage(Model model, @AuthenticationPrincipal CurrentUser customUser){
         model.addAttribute("donations", donationService.findAllByUserId(customUser.getUser().getId()));
         return "main.page";
+    }
+
+    @PostMapping("/donation/details")
+    public String showDonationsDetails(@RequestParam Long id, Model model){
+        model.addAttribute("donation",donationService.findDonationById(id));
+        return "donation.details";
     }
 
 }

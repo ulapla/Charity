@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="header.jsp"/>
@@ -29,6 +30,10 @@
                     przekazano
                 </div>
                 </div>
+                <form method="post" action="/api/donation/details">
+                    <input type="hidden" name="id" value="${donation.id}"/>
+                    <button type="submit" class="btn">Szczegóły</button>
+                </form>
             </li>
         </c:forEach>
     </ul>
