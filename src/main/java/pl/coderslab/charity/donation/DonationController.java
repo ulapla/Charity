@@ -10,6 +10,9 @@ import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
 import pl.coderslab.charity.security.CurrentUser;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -61,4 +64,13 @@ public class DonationController {
         return "donation.details";
     }
 
+    @PostMapping("donation/update")
+    public String updateDonation(@RequestParam Long id){
+        Donation donation = donationService.findDonationById(id);
+        donation.setPickedUp(true);
+        donation.setPickUpDate(LocalDate.now());
+        donation.setPickUpTime(LocalTime.now());
+        donationService.saveDonation(donation);
+        return "redirect:/api/main_page";
+    }
 }

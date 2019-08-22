@@ -19,21 +19,32 @@
         <c:forEach items="${donations}" var="donation">
             <li>
                 <div class="col">
-                <div class="title">${donation.institution.name},
-                    Ilość worków: ${donation.quantity},
-                    Data przekazania: ${donation.pickUpDate}
-                </div>
+                    <div class="title">${donation.institution.name},
+                        Ilość worków: ${donation.quantity},
+                        Data przekazania: ${donation.pickUpDate}
+                    </div>
                     <div class="subtitle">
+                        <c:if test="${donation.pickedUp == false}">
+                            jeszcze nie
+                        </c:if>
+                        przekazano
+                    </div>
+                </div>
+                <div class="subtitle">
                     <c:if test="${donation.pickedUp == false}">
-                        jeszcze nie
+                        <form method="post" action="/api/donation/update">
+                            <input type="hidden" name="id" value="${donation.id}"/>
+                            <button type="submit" class="btn">Przekazano</button>
+                        </form>
                     </c:if>
-                    przekazano
+
                 </div>
+                <div class="subtitle">
+                    <form method="post" action="/api/donation/details">
+                        <input type="hidden" name="id" value="${donation.id}"/>
+                        <button type="submit" class="btn">Szczegóły</button>
+                    </form>
                 </div>
-                <form method="post" action="/api/donation/details">
-                    <input type="hidden" name="id" value="${donation.id}"/>
-                    <button type="submit" class="btn">Szczegóły</button>
-                </form>
             </li>
         </c:forEach>
     </ul>
