@@ -15,6 +15,13 @@
     <ul class="help--slides-items">
             <li>
                 <div class="col">
+                    <div class="title">
+                    Status:
+                    <c:if test="${donation.pickedUp == false}">
+                        nie
+                    </c:if>
+                    przekazano<br>
+                </div>
                     <div class="title">${donation.institution.name}<br>
 
                         Ilość worków: ${donation.quantity}<br>
