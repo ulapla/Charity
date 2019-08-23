@@ -20,4 +20,6 @@ public interface UserService {
     void addRole(User user, String roleName);
 
     void deleteUser(User user);
+
+    User findByUuid(String uuid);
 }

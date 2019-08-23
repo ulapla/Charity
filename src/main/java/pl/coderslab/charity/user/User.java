@@ -18,6 +18,7 @@ public class User {
     private String email;
     private String password;
     private int enabled;
+    private String uuid;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
@@ -85,5 +86,13 @@ public class User {
 
     public void setDonations(Set<Donation> donations) {
         this.donations = donations;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

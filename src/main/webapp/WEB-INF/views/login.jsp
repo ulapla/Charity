@@ -5,6 +5,13 @@
 <jsp:include page="header.jsp"/>
 
 <section class="login-page">
+    <c:if test="${not empty activateMessage}">
+        <h1>
+            <div class="alert alert-success">
+                    ${activateMessage}
+            </div>
+        </h1>
+    </c:if>
     <h2>Zaloguj się</h2>
 
     <form method="post">
