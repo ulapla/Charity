@@ -193,6 +193,19 @@ input {
   overflow: visible;
 }
 
+.alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
@@ -431,6 +444,19 @@ h2:after {
   margin-left: calc(50% - 128px);
 }
 
+.alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
 /* line 25, scss/modules/_base.scss */
 .container {
   margin: 0 auto;
@@ -652,6 +678,7 @@ form .form-group--checkbox .description .subtitle {
   font-style: light;
   font-size: 1.2rem;
 }
+
 
 /* line 104, scss/modules/_forms.scss */
 form .form-group--dropdown .dropdown {

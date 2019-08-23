@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.email.EmailServiceImpl;
 import pl.coderslab.charity.institution.InstitutionService;
@@ -32,9 +33,10 @@ public class HomeController {
     }
 
     @PostMapping("/")
-    public String sentEmail(@RequestParam String name, @RequestParam String surname, @RequestParam String message){
+    public String sentEmail(@RequestParam String name, @RequestParam String surname, @RequestParam String message,
+                            RedirectAttributes redirectAttributes){
         emailService.sendSimpleMessage("ulaplacek@gmail.com","Wiadomość od "+ name + " "+ surname, message);
-        System.out.println("dziala");
+        redirectAttributes.addFlashAttribute("message", "Wysłano wiadomość ");
         return "redirect:/";
     }
 

@@ -15,6 +15,7 @@ public class UserController {
     private final UserService userService;
     private BCryptPasswordEncoder passwordEncoder;
 
+
     public UserController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
