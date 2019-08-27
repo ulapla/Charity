@@ -69,8 +69,8 @@ public class UserController {
     public String enableUser(@RequestParam String uuid){
         User user = userService.findByUuid(uuid);
         user.setEnabled(1);
-        userService.saveUser(user);
-        return "/login";
+        userService.updateUser(user);
+        return "redirect:/login";
     }
 
 }
