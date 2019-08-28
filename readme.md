@@ -8,18 +8,18 @@ After that, you can log in and fill up a form where you declare what you want to
 when and where should courier come for it.
 You can always edit your data, change a password, or check your former donations.
 
-<img src="images/start.png" width="600"/>
+<img src="images/start.png" width="800"/>
 
-<img src="images/steps.png" width="600"/>
+<img src="images/steps.png" width="800"/>
 
-<img src="images/contact.png" width="600"/>
+<img src="images/contact.png" width="800"/>
 
-<img src="images/activateAccount.png" width="600"/>
+<img src="images/activateAccount.png" width="800"/>
 
-<img src="images/form1.png" width="600"/>
+<img src="images/form1.png" width="800"/>
 
-<img src="images/form2.png" width="600"/>
+<img src="images/form2.png" width="800"/>
 
-<img src="images/admins.png" width="600"/>
+<img src="images/admins.png" width="800"/>
 
 
